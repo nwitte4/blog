@@ -23,7 +23,7 @@ remote:
 remote: !	Push rejected to secure-chamber-15308.
 ```
 
-This was really fun for me and for my TA to try to figure out. I looked all over stack overflow for an answer and it was brutalizing, trying all sorts of hacky ways to figure it out, nothing working QUITE right...
+This was really fun for me and for my TA to try to figure out. I looked all over stack overflow for an answer and it was brutalizing, trying all sorts of hacky ways to figure it out, nothing working QUITE right. I installed a few random things, probably shouldn't have? But no harm, no foul. For now.
 
 I finally decide, I'll go to lunch and come back and try again. I look at the build log, but this time, I *really* look and I think to myself, why did I ignore this line so many times:
 ```
@@ -46,6 +46,8 @@ function contains(haystack, needle) {
 }
 </code></pre>
 
-I digress, anyways I hop into my JS files and I remember, "oh my god, this function wasn't working before but it was simply breaking internally and there was no external indicator that anything was broken (nothing was breaking on the page when it ran unless I opened up the console). I deleted the piece of javascript that wasn't working and left the functioning javascript and tried, AGAIN, to push my code onto the heroku app and holy moly it worked. It was as simple as one.single.for.loop not working to send me into a 4 hour long search that was right in front of my face. And to make things funnier, it seems to really have been a single misplaced (or not placed at all) semicolon. Damn you javascript, I still love you.
+I digress, anyways I hop into my JS files and I remember, "oh my god, this function I made a week ago wasn't working before but it was simply breaking internally and there was no external indicator that anything was broken (nothing was breaking on the page when it ran unless I opened up the console). I deleted the piece of javascript that wasn't working and left the functioning javascript and tried, AGAIN, to push my code onto the heroku app and holy moly it worked. It was as simple as one.single.for.loop not working to send me into a 4 hour long search that was right in front of my face. And to make things funnier, it seems to really have been a single misplaced (or not placed at all) semicolon. Damn you javascript.
 
-Again, lesson learned!
+The great thing is, I did it myself. I have come to accept that being a developer means working in a broken state pretty much until deployment and it's pretty cool that I was able to debug it in the end by my own volition. It made me feel powerful and also.. smart? Classic javascript being a blessing in disguise. Love you long time, JS.
+
+Again, though, lesson learned!
