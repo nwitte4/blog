@@ -46,7 +46,16 @@ function contains(haystack, needle) {
 }
 </code></pre>
 
-I digress, anyways I hop into my JS files and I remember, "oh my god, this function I made a week ago wasn't working before but it was simply breaking internally and there was no external indicator that anything was broken (nothing was breaking on the page when it ran unless I opened up the console). I deleted the piece of javascript that wasn't working and left the functioning javascript and tried, AGAIN, to push my code onto the heroku app and holy moly it worked. It was as simple as one.single.for.loop not working to send me into a 4 hour long search that was right in front of my face. And to make things funnier, it seems to really have been a single misplaced (or not placed at all) semicolon. Damn you javascript.
+I digress, anyways I found this stack overflow answer that says, hey, open up your rails console and throw this guy in there:
+```
+JS_PATH = "app/assets/javascripts/**/*.js";
+Dir[JS_PATH].each do |file_name|
+  puts "\n#{file_name}"
+  puts Uglifier.compile(File.read(file_name))
+end
+```
+
+So I do, and it shows me where I'm getting an error! Woo! I hop into that JS files and I remember, "oh my god, this function I made a week ago wasn't working before but it was simply breaking internally and there was no external indicator that anything was broken (nothing was breaking on the page when it ran unless I opened up the console). I deleted the piece of javascript that wasn't working and left the functioning javascript and tried, AGAIN, to push my code onto the heroku app and holy moly it worked. It was as simple as one.single.for.loop not working to send me into a 4 hour long search that was right in front of my face. And to make things funnier, it seems to really have been a single misplaced (or not placed at all) semicolon. Damn you javascript.
 
 The great thing is, I did it myself. I have come to accept that being a developer means working in a broken state pretty much until deployment and it's pretty cool that I was able to debug it in the end by my own volition. It made me feel powerful and also.. smart? Classic javascript being a blessing in disguise. Love you long time, JS.
 
