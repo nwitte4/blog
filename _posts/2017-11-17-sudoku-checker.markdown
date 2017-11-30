@@ -12,23 +12,21 @@ First thing's first I stared at it. After staring, I thought, "Okay, well I gues
 
 <pre><code class="javascript">
   for(let i = 0; i < board.length; i++){
-    // A basic [for loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
-    // To check the numbers in each row
     var currentRow = board[i];
-    // I grab the current row
+    // this grabs each row, one at a time
+
     let numChecker = [];
-    // I initialize a variable called numChecker, it is an empty array
-    // This will be where I temporarily store the values of each row
+    // this is an empty array I will put each number in currentRow, one at a time
 
     for(let i = 0; i < currentRow.length; i++){
-      // This for loop will also run 9 times, because there are nine numbers in each row
       let currentNum = currentRow[i];
-      // I grab the current number of the current row
+      // I grab the current number of the current row and set it equal to a variable called currentNum, fitting
 
       if(numChecker.includes(currentNum)){
-        // I take the current number and I check if the numChecker array contains that number
-        // If the numChecker array contains that number, it means that the number has repeated itself in that row
-        // So I return false
+        // I check if numChecker (an array) contains the currentNum (an individual number)
+        // If numChecker already contains that number, it means that the number is a repeat in that row
+        // because numChecker is emptied after each iteration of the loop
+        // So, I return false
         return false;
       } else {
         // If numChecker does not contain the current number,
@@ -89,57 +87,36 @@ To be clear, this for loop (and the previous for loop) are both running inside o
 
 So after this, I commented out my row validation to make sure that when I passed in a invalid board that it was returning false for the right reasons. So I checked this and changed a few different numbers in different columns and it worked again. Yippie. Onto the subgrids.
 
-So the subgrids originally had me sweating. After staring down my computer for a few minutes I said to myself, "just start small, what do you need first?" Well first I needed each row so I grabbed those with a for loop that ran nine times:
+So the subgrids originally had me sweating. After staring down my computer for a few minutes I said to myself, "just start small, what do you need first?" Well first I need the first grid, so:
 
 <pre><code class="javascript">
-for(let i = 0; i < 9; i++){
-  console.log(board[i]);
-}
+  var tempRow = [];
+  // empty array
+    for(let i = 0; i < 3; i++){
+      var getRow = board[i];
+      // this loop runs 3 times
+      // it grabs the first three rows
+      for(let i = 0; i < 3; i++){
+        tempRow.push((getRow[i]));
+        // for every row, this adds the first three numbers
+      }
+    }
 </code></pre>
 
-That printed out each row so I thought okay, now I need the first three numbers of each row:
+So tempRow now contains an array of 9 numbers representing the first 3x3 grid in the sudoku grid. Next I just need to throw that into the numChecker function.
 
 <pre><code class="javascript">
-for(let i = 0; i < 9; i++){
-  var tempRow = board[i];
-
+  var tempRow = [];
   for(let i = 0; i < 3; i++){
-    console.log(tempRow[i])
+    var getRow = board[i];
+    for(let i = 0; i < 3; i++){
+      tempRow.push((getRow[i]));
+    }
   }
-}
-</code></pre>
-
-Perfect. This gets you the first three numbers of each row. In other words, it grabs the first three subgrids on the left side. Wonderful. Next I needed to make sure that I only grabbed one subgrid at a time, so that I could check if it's valid. The simple fix is change the 9 in the first loop to a 3 and voila, we have the first subgrid. So now we need to save it to a variable, perhaps currentGrid?
-
-<pre><code class="javascript">
-let currentGrid = [];
-
-for(let i = 0; i < 3; i++){
-  var tempRow = board[i];
-
-  for(let i = 0; i < 3; i++){
-    currentGrid.push(tempRow[i]);
-  }
-}
-console.log(currentGrid)
-</code></pre>
-
-So currentGrid now contains an array of 9 numbers representing the first 3x3 grid in the sudoku grid. Next I just need to throw that into the numChecker function.
-
-<pre><code class="javascript">
-let currentGrid = [];
-
-for(let i = 0; i < 3; i++){
-  var tempRow = board[i];
-
-  for(let i = 0; i < 3; i++){
-    currentGrid.push(tempRow[i]);
-  }
-}
 
   let numChecker = [];
-  for(let i = 0; i < currentGrid.length; i++){
-    let currentNum = currentGrid[i];
+  for(let i = 0; i < tempRow.length; i++){
+    let currentNum = tempRow[i];
     if(!checkNums(currentNum, numChecker)){
       return false;
     }
@@ -154,7 +131,70 @@ board[1][0]board[1][1]board[1][2]
 board[2][0]board[2][1]board[2][2]
 </code></pre>
 
-So what to change? Well, I have to change the first index it grabs and the second index it grabs to repeat 8 more times in the proper order. I need each of them to increase by 3 to grab the next 3 rows, and then the last three rows. 
+So what to change? Well, I have to change the first index it grabs and the second index it grabs to repeat 8 more times in the proper order. First I did this:
+
+<pre><code class="javascript">
+var secondIndex = 0;
+var secondIndexMax = 3;
+// these will go into the for loops later
+
+for(let i = 0; i < 3; i++){
+  var tempRow = [];
+  // initializes an empty array to make a temporary 'row' to check
+  // the numbers inside it will still be representing a 3x3 grid
+
+  for(let i = 0; i < 3; i++){
+    var getRow = board[i];
+    // on the first iteration: board[0]
+    // on the second iteration: board[1]
+    // on the third iteration: board[2]
+
+    for(let i = secondIndex; i < secondIndexMax; i++){
+      tempRow.push((getRow[i]));
+      // on the first iteration: getRow[0]
+      // on the second iteration: getRow[1]
+      // on the third iteration: getRow[2]
+    }
+    // important to remember that this inner loop runs 3 times for every iteration of the outer loop
+    // meaning that when the outer loop runs once with board[0]
+    // the inner loop runs three times with board[0]
+    // on the first iteration: board[0][0]
+    // on the second iteration: board[0][1]
+    // on the third iteration: board[0][2]
+  }
+  // so when this outer loop runs 3 times you get:
+  // on the first iteration: board[0][0] board[0][1]board[0][2]
+  // on the second iteration: board[1][0]board[1][2]board[1][2]
+  // on the third iteration: board[2][0] board[2][1]board[2][2]
+  // this comprises our temporary row
+
+
+  // this is our usual check number situation
+  let numChecker = [];
+  for(let i = 0; i < tempRow.length; i++){
+    let currentNum = tempRow[i];
+    if(!checkNums(currentNum, numChecker)){
+      return false;
+    }
+  }
+
+  // however! this is all running inside a third loop that runs 3 times
+  // after each iteration, we add 3 to the secondIndex, and the secondIndexMax
+
+  secondIndex+=3;
+  secondIndexMax+=3;
+}
+// so second iteration we get:
+//  board[0][3] board[0][4]board[0][5]
+//  board[1][3]board[1][4]board[1][5]
+//  board[2][3] board[2][4]board[2][5]
+// and third iteration we get:
+//  board[0][6] board[0][7]board[0][8]
+//  board[1][6]board[1][7]board[1][8]
+//  board[2][6] board[2][7]board[2][8]
+</code></pre>
+
+I swear, I'm almost done. By this point in time. I've grabbed the top three 3x3 grids. All we need to do, is get this baby running for the middle 3x3 grids and the bottom. So what do we do? Another for loop! This time though, we create two variables called firstIndex and firstIndexMax. We follow the same pattern as we did for the second index. You can see the final product below.
 
 The Finale:
 
@@ -196,41 +236,37 @@ function validSolution(board){
     colCounter ++
   }
 
-  // validates subgrids
-let firstIndex = 0;
-let firstIndexMax = 3;
+  // Validates Subgrids
 
-for(let i = 0; i < 3; i++){
-  var secondIndex = 0;
-  var secondIndexMax = 3;
+  let firstIndex = 0;
+  let firstIndexMax = 3;
 
   for(let i = 0; i < 3; i++){
-    var tempRow = [];
-    for(let i = firstIndex; i < firstIndexMax; i++){
-      var getRow = board[i];
-      for(let i = secondIndex; i < secondIndexMax; i++){
-        tempRow.push((getRow[i]));
+    var secondIndex = 0;
+    var secondIndexMax = 3;
+
+    for(let i = 0; i < 3; i++){
+      var tempRow = [];
+      for(let i = firstIndex; i < firstIndexMax; i++){
+        var getRow = board[i];
+        for(let i = secondIndex; i < secondIndexMax; i++){
+          tempRow.push((getRow[i]));
+        }
       }
-    }
-    let tempBox = [];
-    for(let i = 0; i < tempRow.length; i++){
-      tempBox.push(tempRow[i]);
-    }
-    let numChecker = [];
-    for(let i = 0; i < tempBox.length; i++){
-      let currentNum = tempBox[i];
-      if(!checkNums(currentNum, numChecker)){
-        return false;
+
+      let numChecker = [];
+      for(let i = 0; i < tempRow.length; i++){
+        let currentNum = tempRow[i];
+        if(!checkNums(currentNum, numChecker)){
+          return false;
+        }
       }
+      secondIndex+=3;
+      secondIndexMax+=3;
     }
-    secondIndex+=3;
-    secondIndexMax+=3;
+    firstIndex+=3;
+    firstIndexMax+=3;
   }
-  firstIndex+=3;
-  firstIndexMax+=3;
-}
-
-
 
   function checkNums(temporaryNumber, temporaryArray){
     if(!temporaryArray.includes(temporaryNumber)){
@@ -241,13 +277,12 @@ for(let i = 0; i < 3; i++){
     }
   }
 
-
  return true;
 }
 </code></pre>
 
-My next logical move would be figuring out how to *create* a functional sudoku board. If I could do that, I would probably use javascript to remove/hide a certain amount of numbers and allow a user to insert their own numbers.
+My next logical move would be figuring out how to *create* a functional sudoku game. If I could do that, I would probably use javascript to remove/hide a certain amount of numbers and allow a user to insert their own numbers.
 
 At the end there would be an option to "check board", where this code would run, and if they won the function would return true and I'd probably have something fun happen and if they lost it would return false and I would probably have something else fun happen that still informed them they lost.
 
-One step further would be implementing something into numChecker that returned the part of the board that was breaking. Anyways, this was fun let's do it again sometime.
+One step further would be implementing something into numChecker that returned the part of the board that was breaking, although.. some sudoku games I've played don't even go that far so I'd be going above and beyond, classic. Anyways, this was fun let's do it again sometime. I can't believe you read this far.
