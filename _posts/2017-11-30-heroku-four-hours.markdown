@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "I just deployed this application on heroku and it took me 4 hours!"
-date:   2017-11-14 17:25:31 -0500
+date:   2017-11-30 17:25:31 -0500
 ---
 
 Yes four hours! Why you ask?? Javascript, that's why. My favorite and most precious language did this to me and I refused to see it and I think it's partially because I didn't want to see it? I thought, it must be heroku, it must be ruby, it must be the terminal, it must be sqlite! But no. It was javascript.
