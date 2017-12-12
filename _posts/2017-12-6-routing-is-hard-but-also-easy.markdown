@@ -26,8 +26,28 @@ Disclaimer: I should probably mention that when building our first few applicati
 
 <%= link_to 'Add New Author -', new_author_path %>
 
-And it looks great but then when we actually click on it we get an error:
+And it looks great and I add an new author and try to save it but then when we actually click to save we get an error:
 
 ![Routing, man]({{ "/assets/authorsnew.PNG" | absolute_url }})
 
-On the first day I would have thought, "what does this mean, what do I do, what is a route, what is an author, I need help". Fortunately, after a few days it simply became a matter of exposure that I learned to break down:
+On the first day I would have thought, "what does this mean, what do I do, what is a route, what is an author, I need help". Fortunately, after a few days it simply became a matter of exposure that I learned to break down and follow almost like a map with questions:
+
+1. Where is the error occuring?
+2. What is the type of error that is occuring?
+
+These two questions usually lead me to a few more:
+
+1. Is it a routing error? If so, am I missing a route completely?
+2. If not, is it a specific page that's breaking?
+3. Is it a variable?
+4. Have I misspelled that variable?
+5. Have I forgotten to initialize a variable? Have I initialized it wrong?
+6. Is it a method error?
+7. Am I calling the method wrong or am I calling it on the wrong type of object?
+8. Did I forget to end one of my if statements or loops? Classic.
+
+I'm sure there is a plethora of other errors I'm used to getting at this point but those are the ones that I can think of off the top of my head.
+
+I think the main point of this article is routing is extremely confusing when you start getting errors but when you learn to read errors it's actually incredibly easy to target those errors and fix them.
+
+Maybe this article is about the importance of competence when it comes to reading errors. Go figure.
