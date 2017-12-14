@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Routing is hard, but also easy?"
+title:  "Routing with Rails is hard, but also easy?"
 date:   2017-12-6 20:25:31 -0500
 ---
 
