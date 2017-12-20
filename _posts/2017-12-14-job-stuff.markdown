@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "Interviewing seems like a great place to learn?"
+date:   2017-12-14 15:25:31 -0500
+---
+
+During my time at NYCDA, we've gone on a few tours of co-working spaces and had a variety of in-house speakers. A typical student is always inquisitive about the interview process, specifically, how do we nail a tech interview? Recently, we toured [Stitch](https://www.stitchdata.com/company/) and met with a few of their engineers. I felt like their advice was the best advice I'd been given so far. Here are some of the highlights:
+
+1. You need to get through the first through technical interviews and chances are, they're going to suck
+
+First of all, girl preach. Interviews are hard enough but adding a part where you have to do more than talk about yourself(also why do you forget everything about yourself when someone asks you about yourself??) and why you'd make a good fit is daunting. That being said, once you get through the first few, it WILL get less daunting. Notice I said less, because I doubt you will ever go into a technical interview and feel dauntless(?). So, if you're scared, that's okay; push through!
+
+2. If you don't know where to start, ask questions
+
+The girl that spoke to us told us about an interview where she was asked to create an elevator scheduling algorithm and she had no idea where to start. She looked at her interviewer and told him, "I'm not sure how to do that" and he got up and said, "That's okay", picked up a marker and asked her, "Where would you start?" and she said, "How many elevators?"
+
+Maybe it's lame, but I think I'm going to take that statement and run with it as my interview mentality. I'm going to go into an interview and start each question with, "How many elevators?" Maybe not literally... but figuratively speaking.
+
+3. If you do know where to start, ask questions
+4. It's better to stumble through a problem out loud and eventually reach a conclusion than to sit in silence for 15 minutes and come up with a perfect answer at the end
+
+These two sort of went hand in hand. They told us that most questions are *meant* to make you stumble. If every interview question was easy, everyone would get hired. They want to see how you think and your journey to a solution because it's indicative of how you would work with a team. If you're quiet and answer perfectly, that might be cool if you run your own business by yourself, but if you have teammates they're going to want to know why and how you got there.
+
+Additionally, your interviewer might purposefully leave out pieces of information which eventually *should* lead you back to them. You're *supposed* to ask them for the missing pieces to show that you're willing to ask for help when you need it.
+
+5. Think about how much you're going to learn on each failed interview
+
+This is my own piece of advice to myself. If you absolutely nail an interview, you've learned nothing because you knew everything. I guess that is awesome, but chances are you either failed a lot of interviews prior to this one or you haven't been pushing yourself enough. (Or you have a photographic memory/you're a savant). Point being, every time you hit a mental wall in an interview, it's a chance to learn something and that's friggin' sweeeet. It's basically free educational experience and school is EXPENSIVE these days.
+
+So to sum it up, interviewing is scary but also probably one of the best places to learn about yourself. 
