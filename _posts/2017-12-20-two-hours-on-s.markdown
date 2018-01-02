@@ -53,4 +53,4 @@ Back to the story, we changed our tag to this:
 And it worked. I realize the narrative structure here isn't entirely clear but we did the first few things in about 20 minutes maybe and spent the next two hours fiddling around with syntax with a ton of things not working only to finally come to the conclusion that it may have been the difference of an 's'. We just happened to interpolate the key at the same time that we changed the 's' and it finally fell into place. The end.
 
 
-#TLDR: We spent two hours changing code all over our application before realizing we needed to change our URL from http to https. 
+#TLDR: We spent two hours changing code all over our application before realizing we needed to change our URL from http to https.
